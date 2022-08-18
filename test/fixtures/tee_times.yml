@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unix_time: 2022-08-17 19:00:27
+  member_id: 1
+  booked: false
+
+two:
+  unix_time: 2022-08-17 19:00:27
+  member_id: 1
+  booked: false
