@@ -1,20 +1,30 @@
-import MemberCard from "./MemberCard"
+import TwoWeekCalendar from "./TwoWeekCalendar"
 
 export default function LandingPage( {allMembers} ) {
+// const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+// const times = ["7:00 am", "8:00 am", "9:00 am", "12:00 pm", "1:00 pm", "2:00 pm"]
 
 
+  
 
-    const mapAllMembers = allMembers.map(member => {
-        return(
-            <MemberCard key={member.id} member={member}/>
-        )
-    })
+
+    function addMinutes(date = new Date('August 19, 2022 07:00:00')) {
+        date.setMinutes(date.getMinutes() + 13)
+        console.log(date)
+    }
+
+    // const n = 10
+    // for (let i = 0; i < n; i++) { 
+    //  addMinutes()
+    // }
+        
+    
 
 
 
     return (
         <div>
-            {mapAllMembers}
+            Test
         </div>
     )
 }

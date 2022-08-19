@@ -1,0 +1,3 @@
+class ReservationTimesController < ApplicationController
+
+end
