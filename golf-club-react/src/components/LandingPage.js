@@ -12,6 +12,13 @@ export default function LandingPage( {allMembers} ) {
         date.setMinutes(date.getMinutes() + 13)
         console.log(date)
     }
+    addMinutes()
+    
+    function addDays(date = new Date()) {
+        date.setDate(date.getDate() + 1)
+        console.log(date)
+    }
+    addDays()
 
     // const n = 10
     // for (let i = 0; i < n; i++) { 
