@@ -1,20 +1,18 @@
 
 import React, { useEffect, useState } from "react"
-import TimeCard from "./TimeCard"
+import DayCard from "./DayCard"
 
 
-export default function LandingPage( {allMembers} ) {
-// const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-// const times = ["7:00 am", "8:00 am", "9:00 am", "12:00 pm", "1:00 pm", "2:00 pm"]
+export default function LandingPage( ) {
 
-// const dayTwoWeeks = useState([])
 const [availableTeeTimeTimeArray, setAvailableTeeTimeTimeArray] = useState([])
 console.log(availableTeeTimeTimeArray)
    
     useEffect(() => {
         
-        let teeTimeTimeArrayUnix = []
-        console.log(teeTimeTimeArrayUnix)
+        const teeTimeTimeArrayUnix = []
+        // console.log(teeTimeTimeArrayUnix)
+        const chunkedArray = [];
 
 
         function indexDay() {
@@ -54,25 +52,37 @@ console.log(availableTeeTimeTimeArray)
                     teeTimeTimeArrayUnix.push(newTimeVersion)    
                 }
         }
+
+        function chunk(array, chunkSize) {
+            let counter = 0;
+            while(counter < array.length) {
+              chunkedArray.push(array.slice(counter, counter + chunkSize));  
+              counter += chunkSize;
+            }
+            // console.log(chunkedArray)
+            setAvailableTeeTimeTimeArray(chunkedArray)
+          }
         
+        
+
         indexDay()
-        setAvailableTeeTimeTimeArray(teeTimeTimeArrayUnix)
+        chunk(teeTimeTimeArrayUnix, 43)
+        
+        // setAvailableTeeTimeTimeArray(teeTimeTimeArrayUnix)
         
     }, [])
+
+    const mapAvailableTeeTimeTimeArray = availableTeeTimeTimeArray.map(dayArray => {
+        return (
+            <DayCard key={dayArray[0]} dayArray={dayArray} />
+        )
+    })
 
 
 // ++++++++++++++++++++++++++++++++++++++++++
 
-
-
 // +++++++++++++++++++++++++++++++++++++++++++
-    
-    const mapAvailableTeeTimeTimeArray = availableTeeTimeTimeArray.map(time => {
-        return (
-            // console.log(time)
-            <TimeCard key={time} date={time.toLocaleDateString()} time={time.toLocaleTimeString()} />
-        )
-    })
+
 
     return (
         <div>
