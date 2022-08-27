@@ -1,15 +1,19 @@
 import React from "react";
 
-export default function TimeCard({ date, time }) {
-    // function timeConverted(oldTimeVersion) {
-    //     let newTimeVersion = new Date(oldTimeVersion)
-    //     console.log(newTimeVersion)
-    // }
-    // timeConverted(time)
+export default function TimeCard({ teeTime, removeTeeTime }) {
+    // console.log(day)
+    const timeConverted = new Date(teeTime)
+
+    
+
+
     return (
         <div>
-            date: {date}
-            time: {time}
+            <div>
+                {/* {teeTime.getDay()} */}
+                {timeConverted.toLocaleDateString()} - {timeConverted.toLocaleTimeString()}
+            </div>
+            
         </div>
     )
 }

@@ -1,17 +1,17 @@
 import React from "react";
 import TimeCard from "./TimeCard";
 
-export default function DayCard({ dayArray }) {
+export default function DayCard({ dayArray, removeTeeTime }) {
 
-
+    
     
 
 
 
-    const mapDayArray = dayArray.map(time => {
+    const mapDayArray = dayArray.map(teeTime => {
         return (
             // console.log(time)
-            <TimeCard key={time} date={time.toLocaleDateString()} time={time.toLocaleTimeString()} />
+            <TimeCard key={teeTime} teeTime={teeTime} removeTeeTime={removeTeeTime}/>
         )
     })
 
@@ -19,9 +19,9 @@ export default function DayCard({ dayArray }) {
 
     return (
         <div>
-            
-                {mapDayArray}
-            <div>________________________</div>
+            <div>---------------------</div> 
+            {mapDayArray}
+            <div>---------------------</div> 
         </div>
     )
 }

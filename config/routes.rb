@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
   resources :reservation_times
   resources :days
   resources :tee_times

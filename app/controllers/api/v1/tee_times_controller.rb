@@ -1,2 +1,0 @@
-class TeeTimesController < ApplicationController
-end

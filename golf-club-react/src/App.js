@@ -1,7 +1,7 @@
 
 import './App.css';
 import LandingPage from './components/LandingPage';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 function App() {
 

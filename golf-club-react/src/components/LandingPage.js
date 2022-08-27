@@ -1,19 +1,19 @@
 
 import React, { useEffect, useState } from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import TwoWeekCalendar from "./TwoWeekCalendar";
 import DayCard from "./DayCard"
+import MonthView from "./MonthView";
 
 
 export default function LandingPage( ) {
 
-const [availableTeeTimeTimeArray, setAvailableTeeTimeTimeArray] = useState([])
-console.log(availableTeeTimeTimeArray)
+    const [availableTeeTimeTimeArray, setAvailableTeeTimeTimeArray] = useState([])
    
-    useEffect(() => {
-        
+    useEffect(() => {        
         const teeTimeTimeArrayUnix = []
         // console.log(teeTimeTimeArrayUnix)
         const chunkedArray = [];
-
 
         function indexDay() {
             //get todays date and set time to 6:47am to offset the start time of 7:00am in for loop
@@ -47,9 +47,10 @@ console.log(availableTeeTimeTimeArray)
             const n = 43
                 for (let i = 0; i < n; i++) {
                     let newTeeTimeHours = teeTimeHours.setMinutes(teeTimeHours.getMinutes() + 13)
-                    // console.log(newTeeTimeHours)    
-                    let newTimeVersion = new Date(newTeeTimeHours)
-                    teeTimeTimeArrayUnix.push(newTimeVersion)    
+                    console.log(newTeeTimeHours)  
+                    teeTimeTimeArrayUnix.push(newTeeTimeHours)  
+                    // let newTimeVersion = new Date(newTeeTimeHours)
+                    // teeTimeTimeArrayUnix.push(newTimeVersion)    
                 }
         }
 
@@ -62,9 +63,8 @@ console.log(availableTeeTimeTimeArray)
             // console.log(chunkedArray)
             setAvailableTeeTimeTimeArray(chunkedArray)
           }
-        
-        
 
+        // invoke indexDay and chunk function
         indexDay()
         chunk(teeTimeTimeArrayUnix, 43)
         
@@ -72,21 +72,28 @@ console.log(availableTeeTimeTimeArray)
         
     }, [])
 
-    const mapAvailableTeeTimeTimeArray = availableTeeTimeTimeArray.map(dayArray => {
-        return (
-            <DayCard key={dayArray[0]} dayArray={dayArray} />
-        )
-    })
+    
 
 
 // ++++++++++++++++++++++++++++++++++++++++++
+
+
+function removeTeeTime(removedTeeTime) {
+    // setAvailableTeeTimeTimeArray(availableTeeTimeTimeArray.filter(teeTime => teeTime !== removedTeeTime))
+    console.log(removedTeeTime)
+}
+
+
 
 // +++++++++++++++++++++++++++++++++++++++++++
 
 
     return (
-        <div>
-            {mapAvailableTeeTimeTimeArray}
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<MonthView availableTeeTimeTimeArray={availableTeeTimeTimeArray}/>}/>
+                <Route path="/day" element={<TwoWeekCalendar />}/>
+            </Routes>
+        </Router>
     )
 }
