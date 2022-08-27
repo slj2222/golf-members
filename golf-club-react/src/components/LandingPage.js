@@ -9,6 +9,8 @@ import MonthView from "./MonthView";
 export default function LandingPage( ) {
 
     const [availableTeeTimeTimeArray, setAvailableTeeTimeTimeArray] = useState([])
+    const [selectedDay, setSelectedDay] = useState([])
+    console.log(selectedDay)
    
     useEffect(() => {        
         const teeTimeTimeArrayUnix = []
@@ -47,7 +49,7 @@ export default function LandingPage( ) {
             const n = 43
                 for (let i = 0; i < n; i++) {
                     let newTeeTimeHours = teeTimeHours.setMinutes(teeTimeHours.getMinutes() + 13)
-                    console.log(newTeeTimeHours)  
+                    // console.log(newTeeTimeHours)  
                     teeTimeTimeArrayUnix.push(newTeeTimeHours)  
                     // let newTimeVersion = new Date(newTeeTimeHours)
                     // teeTimeTimeArrayUnix.push(newTimeVersion)    
@@ -80,7 +82,7 @@ export default function LandingPage( ) {
 
 function removeTeeTime(removedTeeTime) {
     // setAvailableTeeTimeTimeArray(availableTeeTimeTimeArray.filter(teeTime => teeTime !== removedTeeTime))
-    console.log(removedTeeTime)
+    // console.log(removedTeeTime)
 }
 
 
@@ -91,8 +93,8 @@ function removeTeeTime(removedTeeTime) {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<MonthView availableTeeTimeTimeArray={availableTeeTimeTimeArray}/>}/>
-                <Route path="/day" element={<TwoWeekCalendar />}/>
+                <Route path="/" element={<MonthView availableTeeTimeTimeArray={availableTeeTimeTimeArray} setSelectedDay={setSelectedDay}/>}/>
+                <Route path="/:id" element={<DayCard selectedDay={selectedDay} />}/>
             </Routes>
         </Router>
     )

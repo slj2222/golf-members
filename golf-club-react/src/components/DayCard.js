@@ -1,14 +1,14 @@
 import React from "react";
 import TimeCard from "./TimeCard";
 
-export default function DayCard({ dayArray, removeTeeTime }) {
+export default function DayCard({ selectedDay, removeTeeTime }) {
 
     
     
 
 
 
-    const mapDayArray = dayArray.map(teeTime => {
+    const mapSelectedDay = selectedDay.map(teeTime => {
         return (
             // console.log(time)
             <TimeCard key={teeTime} teeTime={teeTime} removeTeeTime={removeTeeTime}/>
@@ -20,7 +20,7 @@ export default function DayCard({ dayArray, removeTeeTime }) {
     return (
         <div>
             <div>---------------------</div> 
-            {mapDayArray}
+            {mapSelectedDay}
             <div>---------------------</div> 
         </div>
     )
