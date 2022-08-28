@@ -3,9 +3,8 @@ import './App.css';
 import LandingPage from './components/LandingPage';
 // import { useEffect, useState } from 'react';
 
-function App() {
 
-  // const [allMembers, setAllMembers] = useState([])
+function App() {
 
   // useEffect(() => {
   //   fetch("http://localhost:3000/api/v1/members")
@@ -15,12 +14,11 @@ function App() {
   //       setAllMembers(data)
   //     })
   // }, [])
-
   
 
   return (
     <div className="App">
-      <LandingPage 
+      <LandingPage
         // allMembers={allMembers} 
       />
     </div>

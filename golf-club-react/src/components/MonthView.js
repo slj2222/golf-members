@@ -1,13 +1,13 @@
 import React from "react";
 import MonthViewCard from "./MonthViewCard";
 
-export default function MonthView({ availableTeeTimeTimeArray, setSelectedDay }) {
-
+export default function MonthView({ availableTeeTimeDayArray }) {
+console.log(availableTeeTimeDayArray)
     //mapover the state array and return the DayCard.js component, send each day as props to DayComponent.js
-    const mapAvailableTeeTimeTimeArrayDayView = availableTeeTimeTimeArray.map(dayArray => {
+    const mapAvailableTeeTimeTimeArrayDayView = availableTeeTimeDayArray.map(dayArray => {
         // console.log(dayArray)
         return (
-            <MonthViewCard key={dayArray[0]} dayArray={dayArray} setSelectedDay={setSelectedDay}/>
+            <MonthViewCard key={dayArray} dayArray={dayArray} />
         )
     })
 
