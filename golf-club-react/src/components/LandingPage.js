@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DayView from "./DayView"
 import MonthView from "./MonthView"
 import ReserveView from "./ReserveView";
+import Navbar from "./Navbar";
 
 
 export default function LandingPage() {
@@ -68,10 +69,10 @@ export default function LandingPage() {
 // ++++++++++++++++++++++++++++++++++++++++++
 
 
-function removeTeeTime(removedTeeTime) {
-    // setAvailableTeeTimeTimeArray(availableTeeTimeTimeArray.filter(teeTime => teeTime !== removedTeeTime))
-    // console.log(removedTeeTime)
-}
+// function removeTeeTime(removedTeeTime) {
+//     // setAvailableTeeTimeTimeArray(availableTeeTimeTimeArray.filter(teeTime => teeTime !== removedTeeTime))
+//     // console.log(removedTeeTime)
+// }
 
 
 
@@ -80,6 +81,7 @@ function removeTeeTime(removedTeeTime) {
 
     return (
         <Router>
+            <Navbar />
             <Routes>
                 <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} />}/>
                 <Route path="/:id" element={<DayView  />}/>

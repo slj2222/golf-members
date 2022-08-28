@@ -10,6 +10,7 @@ export default function ReserveView() {
     // console.log(timeConverted)
     const defaultPlayers = 1
     const [numberOfPlayers, setNumberOfPlayers] = useState(defaultPlayers)
+    console.log(numberOfPlayers)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -47,6 +48,35 @@ export default function ReserveView() {
                         <option>4</option>
                     </select>
                 </div>
+                        {numberOfPlayers === "2" ? (
+                            <div>
+                                <select>
+                                    <option>select a friend</option>
+                                </select>
+                            </div>
+                        ) : numberOfPlayers === "3" ? (
+                            <div>
+                                <select>
+                                    <option>select a friend</option>
+                                </select>
+                                <select>
+                                    <option>select a friend</option>
+                                </select>
+                            </div>
+                        ) : numberOfPlayers === "4" ? (
+                            <div>
+                                <select>
+                                    <option>select a friend</option>
+                                </select>
+                                <select>
+                                    <option>select a friend</option>
+                                </select>
+                                <select>
+                                    <option>select a friend</option>
+                                </select>
+                            </div>
+                        ) : null}
+                        
                 <button type="sumbit">Confirm Reservation</button>
             </form>
         </div>
