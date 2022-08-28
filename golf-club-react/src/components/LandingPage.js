@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import TwoWeekCalendar from "./TwoWeekCalendar";
-import DayCard from "./DayCard"
+import DayView from "./DayView"
 import MonthView from "./MonthView";
 
 
@@ -81,7 +81,7 @@ function removeTeeTime(removedTeeTime) {
         <Router>
             <Routes>
                 <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} />}/>
-                <Route path="/:id" element={<DayCard  />}/>
+                <Route path="/:id" element={<DayView  />}/>
             </Routes>
         </Router>
     )

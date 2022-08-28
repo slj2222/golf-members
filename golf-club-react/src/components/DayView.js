@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TimeCard from "./TimeCard";
 import { useParams } from "react-router-dom";
 
-export default function DayCard({ removeTeeTime }) {
+export default function DayView({ removeTeeTime }) {
     // console.log(selectedDay)
     // const selectedDayConverted = new Date(selectedDay)
     // console.log(selectedDayConverted)
@@ -17,13 +17,13 @@ export default function DayCard({ removeTeeTime }) {
         const teeTimeTimeArrayUnix = []
 
         function addMinutes(selectedDayConverted) {
-            console.log(id)
+            // console.log(id)
             // console.log(selectedDayConverted)    
             //set the number of times it needs to add 13 min
             const n = 43
                 for (let i = 0; i < n; i++) {
                     let newTeeTimeHours = selectedDayConverted.setMinutes(selectedDayConverted.getMinutes() + 13)
-                    console.log(newTeeTimeHours)  
+                    // console.log(newTeeTimeHours)  
                     teeTimeTimeArrayUnix.push(newTeeTimeHours)  
                 }
         }
