@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function TimeCard({ teeTime, removeTeeTime }) {
     // console.log(day)
@@ -12,8 +13,11 @@ export default function TimeCard({ teeTime, removeTeeTime }) {
             <div>
                 {/* {teeTime.getDay()} */}
                 {timeConverted.toLocaleDateString()} - {timeConverted.toLocaleTimeString()}
+                
             </div>
-            
+            <Link to={`/${teeTime}/reserve`}>
+                <button>Reserve</button>
+            </Link>
         </div>
     )
 }

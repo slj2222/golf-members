@@ -7,6 +7,6 @@ class Api::V1::ReservationsController < ApplicationController
 
     private
     def newReservationParams
-        params.permit( :member_id, :time)
+        params.permit(:member_id, :reservation_time, :number_of_players)
     end
 end

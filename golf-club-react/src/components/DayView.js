@@ -44,6 +44,7 @@ export default function DayView({ removeTeeTime }) {
 
     return (
         <div>
+            DAY VIEW
             <div>---------------------</div> 
             {mapAvailableTeeTimeTimeArray}
             <div>---------------------</div> 

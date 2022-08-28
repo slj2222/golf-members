@@ -22,8 +22,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_21_150448) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer "membership_number"
-    t.datetime "time"
+    t.integer "member_id"
+    t.integer "number_of_players"
+    t.integer "reservation_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
