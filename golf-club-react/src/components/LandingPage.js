@@ -23,6 +23,7 @@ export default function LandingPage() {
         function indexDay() {
             //get todays date and set time to 6:47am to offset the start time of 7:00am in for loop
             const changeHours = new Date().setHours(6,47,0)
+            // console.log(changeHours)
             //new date
             const withHoursChanged = new Date(changeHours)
             //gets previously changed time and changes the date back one day
@@ -74,6 +75,14 @@ export default function LandingPage() {
 //     // console.log(removedTeeTime)
 // }
 
+const [apiReservations, setApiReservations] = useState([])
+
+useEffect(() => {
+    fetch("http://localhost:3000/api/v1/reservations")
+        .then(res => res.json())
+        .then(data => setApiReservations(data))
+}, [])
+
 
 
 // +++++++++++++++++++++++++++++++++++++++++++
@@ -84,7 +93,7 @@ export default function LandingPage() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} />}/>
-                <Route path="/:id" element={<DayView  />}/>
+                <Route path="/:id" element={<DayView  apiReservations={apiReservations}/>}/>
                 <Route path="/:id/reserve" element={<ReserveView />}/>
             </Routes>
         </Router>

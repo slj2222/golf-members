@@ -1,4 +1,9 @@
 class Api::V1::ReservationsController < ApplicationController
+    
+    def index 
+        render json: Reservation.all
+    end
+    
     def create 
         newReservation = Reservation.create(newReservationParams)
         render json: newReservation

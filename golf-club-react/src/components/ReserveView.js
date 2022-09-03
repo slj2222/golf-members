@@ -10,7 +10,7 @@ export default function ReserveView() {
     // console.log(timeConverted)
     const defaultPlayers = 1
     const [numberOfPlayers, setNumberOfPlayers] = useState(defaultPlayers)
-    console.log(numberOfPlayers)
+    // console.log(numberOfPlayers)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -24,7 +24,7 @@ export default function ReserveView() {
             })
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            // .then(data => console.log(data))
     }
 
 
