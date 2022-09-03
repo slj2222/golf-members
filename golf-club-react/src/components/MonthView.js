@@ -9,7 +9,7 @@ export default function MonthView({ availableTeeTimeDayArray }) {
         const dayArrayZero = parseInt(dayArray.toString().substring(0,9) + "0000")
         
         return (
-            <MonthViewCard key={dayArray} dayArray={dayArrayZero} />
+            <MonthViewCard key={dayArrayZero} dayArray={dayArrayZero} />
         )
     })
 

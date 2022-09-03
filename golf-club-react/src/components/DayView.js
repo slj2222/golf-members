@@ -5,36 +5,41 @@ import { useParams } from "react-router-dom";
 export default function DayView({ apiReservations, removeTeeTime }) {
     // console.log(selectedDay)
 
-    const [teeTimeTimeArrayUnix, setTeeTimeTimeArrayUnix] = useState([])
+    const [temp1, setTemp1] = useState([])
+    console.log(`temp1: ${temp1}`)
+    const [temp2, setTemp2] = useState([])
+    console.log(`temp2: ${temp2}`)
 
     const { id } = useParams()
     
     const selectedDayConverted = new Date(parseInt(id))
-
-    const apiReservationTimes = apiReservations.map(reservation => reservation.reservation_time) 
-    // console.log(typeof(apiReservationTimes))
     
     useEffect(() => {
+        
+        const apiReservationTimes = apiReservations.map(reservation => reservation.reservation_time) 
+        // console.log(typeof(apiReservationTimes))
+        
+        const tempArr2 = []
+                
+        apiReservationTimes.forEach(time => {
+            tempArr2.push(time)
+            
+        });
+
+        setTemp2(tempArr2)
 
         function addMinutes(selectedDayConverted) {
             // console.log(id)
             // console.log(selectedDayConverted)    
-            const tempArr = []
+            const tempArr1 = []    
             //set the number of times it needs to add 13 min
             const n = 43
                 for (let i = 0; i < n; i++) {
                     const newTeeTimeHours = parseInt(selectedDayConverted.setMinutes(selectedDayConverted.getMinutes() + 13))
-                    // tempArr.push(newTeeTimeHours)
-                    // console.log(tempArr)
-                    for (let j = 0; j < apiReservationTimes.length; j++ ) {                        
-                        if (newTeeTimeHours === parseInt(apiReservationTimes)){
-                            console.log(`${newTeeTimeHours} already booked`)
-                        } else {
-                            tempArr.push(newTeeTimeHours)
-                        }
-                    }
+                    // console.log(newTeeTimeHours)
+                    tempArr1.push(newTeeTimeHours)
                 }
-                setTeeTimeTimeArrayUnix(tempArr)
+                setTemp1(tempArr1)
         }
 
 // +++++++++++++++++++++
@@ -44,9 +49,10 @@ export default function DayView({ apiReservations, removeTeeTime }) {
         
     }, [apiReservations])
 
-    // 1662498360262
 
-    const mapAvailableTeeTimeTimeArray = teeTimeTimeArrayUnix.map(teeTime => {
+
+    
+    const mapteeTimeTimeArrayUnix = temp1.filter(ttime => !temp2.includes(ttime)).map(teeTime => {
         return (
             // console.log(time)
             <TimeCard key={teeTime} teeTime={teeTime} removeTeeTime={removeTeeTime}/>
@@ -62,7 +68,7 @@ export default function DayView({ apiReservations, removeTeeTime }) {
         <div>
             DAY VIEW
             <div>---------------------</div> 
-            {mapAvailableTeeTimeTimeArray}
+            {mapteeTimeTimeArrayUnix}
             <div>---------------------</div> 
         </div>
     )
