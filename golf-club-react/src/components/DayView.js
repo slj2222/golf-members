@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 export default function DayView({ apiReservations, removeTeeTime }) {
     // console.log(selectedDay)
 
-    const [temp1, setTemp1] = useState([])
-    console.log(`temp1: ${temp1}`)
-    const [temp2, setTemp2] = useState([])
-    console.log(`temp2: ${temp2}`)
+    const [unixState, setUnixState] = useState([])
+    console.log(`unixState: ${unixState}`)
+    const [apiState, setApiState] = useState([])
+    console.log(`apiState: ${apiState}`)
 
     const { id } = useParams()
     
@@ -19,27 +19,27 @@ export default function DayView({ apiReservations, removeTeeTime }) {
         const apiReservationTimes = apiReservations.map(reservation => reservation.reservation_time) 
         // console.log(typeof(apiReservationTimes))
         
-        const tempArr2 = []
+        const tempApiRes = []
                 
         apiReservationTimes.forEach(time => {
-            tempArr2.push(time)
+            tempApiRes.push(time)
             
         });
 
-        setTemp2(tempArr2)
+        setApiState(tempApiRes)
 
         function addMinutes(selectedDayConverted) {
             // console.log(id)
             // console.log(selectedDayConverted)    
-            const tempArr1 = []    
+            const tempUnixRes = []    
             //set the number of times it needs to add 13 min
             const n = 43
                 for (let i = 0; i < n; i++) {
                     const newTeeTimeHours = parseInt(selectedDayConverted.setMinutes(selectedDayConverted.getMinutes() + 13))
                     // console.log(newTeeTimeHours)
-                    tempArr1.push(newTeeTimeHours)
+                    tempUnixRes.push(newTeeTimeHours)
                 }
-                setTemp1(tempArr1)
+                setUnixState(tempUnixRes)
         }
 
 // +++++++++++++++++++++
@@ -52,7 +52,7 @@ export default function DayView({ apiReservations, removeTeeTime }) {
 
 
     
-    const mapteeTimeTimeArrayUnix = temp1.filter(ttime => !temp2.includes(ttime)).map(teeTime => {
+    const mapteeTimeTimeArrayUnix = unixState.filter(ttime => !apiState.includes(ttime)).map(teeTime => {
         return (
             // console.log(time)
             <TimeCard key={teeTime} teeTime={teeTime} removeTeeTime={removeTeeTime}/>
