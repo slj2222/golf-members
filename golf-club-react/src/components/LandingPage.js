@@ -6,9 +6,10 @@ import DayView from "./DayView"
 import MonthView from "./MonthView"
 import ReserveView from "./ReserveView";
 import Navbar from "./Navbar";
+import Login from "./Login";
 
-
-export default function LandingPage() {
+export default function LandingPage({ currentUser, handleLogin, getCSRFToken }) {
+    
 
     const [availableTeeTimeDayArray, setAvailableTeeTimeDayArray] = useState([])
     // const [selectedDay, setSelectedDay] = useState([])
@@ -90,11 +91,23 @@ useEffect(() => {
 
     return (
         <Router>
-            <Navbar />
+            {currentUser ? (
+                <>
+                    <Navbar />
+                </>
+            ) : null}
             <Routes>
-                <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} />}/>
-                <Route path="/:id" element={<DayView  apiReservations={apiReservations}/>}/>
-                <Route path="/:id/reserve" element={<ReserveView />}/>
+                {currentUser ? (
+                    <>
+                        <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} currentUser={currentUser} />}/>
+                        <Route path="/:id" element={<DayView  apiReservations={apiReservations}/>}/>
+                        <Route path="/:id/reserve" element={<ReserveView getCSRFToken={getCSRFToken}/>}/>        
+                    </>
+                ) : (
+                    <>
+                        <Route path="/" element={<Login handleLogin={handleLogin} getCSRFToken={getCSRFToken}/>} />    
+                    </>
+                )}
             </Routes>
         </Router>
     )

@@ -6,6 +6,10 @@ class CreateMembers < ActiveRecord::Migration[7.0]
       t.integer :membership_number
       t.integer :phone_number
       t.string :email_address
+      t.string :username
+      t.boolean :is_admin
+      t.string :password_digest
+      
 
       t.timestamps
     end

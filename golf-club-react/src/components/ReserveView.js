@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-export default function ReserveView() {
+export default function ReserveView({ getCSRFToken }) {
 
     const { id } = useParams()
     const intId = parseInt(id)
@@ -16,7 +16,11 @@ export default function ReserveView() {
         e.preventDefault()
         fetch("http://localhost:3000/api/v1/reservations", {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            headers: { 
+                'X-CSRF-Token': getCSRFToken(),
+                'Content-Type': 'application/json' 
+            },
             body: JSON.stringify({
                 member_id: 1,
                 number_of_players: numberOfPlayers,

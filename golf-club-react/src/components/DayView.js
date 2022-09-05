@@ -4,29 +4,38 @@ import { useParams } from "react-router-dom";
 
 export default function DayView({ apiReservations, removeTeeTime }) {
     // console.log(selectedDay)
+    console.log(apiReservations)
 
     const [unixState, setUnixState] = useState([])
     console.log(`unixState: ${unixState}`)
     const [apiState, setApiState] = useState([])
-    console.log(`apiState: ${apiState}`)
+    console.log(`: ${apiState}`)
 
     const { id } = useParams()
     
     const selectedDayConverted = new Date(parseInt(id))
     
     useEffect(() => {
-        
-        const apiReservationTimes = apiReservations.map(reservation => reservation.reservation_time) 
-        // console.log(typeof(apiReservationTimes))
-        
         const tempApiRes = []
+        console.log(apiReservations)
+        if (apiReservations.length > 0) {
+            const apiReservationTimes = apiReservations.map(reservation => reservation.reservation_time) 
+            // console.log(typeof(apiReservationTimes))    
+            apiReservationTimes.forEach(time => {
+                tempApiRes.push(time)
+            });
+            setApiState(tempApiRes)
+            console.log(apiState)
+        } else {
+            console.log("else?")
+        }
+        
+        
+        
                 
-        apiReservationTimes.forEach(time => {
-            tempApiRes.push(time)
-            
-        });
+        
 
-        setApiState(tempApiRes)
+        // setApiState(tempApiRes)
 
         function addMinutes(selectedDayConverted) {
             // console.log(id)

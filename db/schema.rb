@@ -17,6 +17,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_21_150448) do
     t.integer "membership_number"
     t.integer "phone_number"
     t.string "email_address"
+    t.string "username"
+    t.boolean "is_admin"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

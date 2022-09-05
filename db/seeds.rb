@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-member1 = Member.create(first_name: "Spencer", last_name: "Johnson", phone_number: 4172095022, membership_number: 3913, email_address: "sljohnson2225@gmail.com")
+member1 = Member.create(first_name: "Spencer", last_name: "Johnson", phone_number: 4172095022, membership_number: 3913, email_address: "sljohnson2225@gmail.com", username: "slj2225", is_admin: false, password: "123" )
 
 
 
