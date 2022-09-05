@@ -75,7 +75,7 @@ function App() {
   
     return (
       <div className="App">
-        <LandingPage currentUser={currentUser} handleLogin={handleLogin} getCSRFToken={getCSRFToken}/>
+        <LandingPage currentUser={currentUser} handleLogin={handleLogin} handleLogout={handleLogout} getCSRFToken={getCSRFToken}/>
       </div>
     );
   

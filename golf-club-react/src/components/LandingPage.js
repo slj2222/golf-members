@@ -8,7 +8,7 @@ import ReserveView from "./ReserveView";
 import Navbar from "./Navbar";
 import Login from "./Login";
 
-export default function LandingPage({ currentUser, handleLogin, getCSRFToken }) {
+export default function LandingPage({ currentUser, handleLogin, getCSRFToken, handleLogout }) {
     
 
     const [availableTeeTimeDayArray, setAvailableTeeTimeDayArray] = useState([])
@@ -93,7 +93,7 @@ useEffect(() => {
         <Router>
             {currentUser ? (
                 <>
-                    <Navbar />
+                    <Navbar handleLogout={handleLogout} getCSRFToken={getCSRFToken}/>
                 </>
             ) : null}
             <Routes>

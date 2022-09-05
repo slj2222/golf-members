@@ -1,7 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ handleLogout, getCSRFToken }) {
+
+    function handleClick() {
+        fetch('http://localhost:3000/api/v1/logout', {
+            method: "DELETE",
+            credentials: 'include',
+            headers: {
+                'X-CSRF-Token': getCSRFToken(),
+                "Content-Type": "application/json",
+            },
+        }).then(() => handleLogout())
+    } 
+
     return (
         <div>
             NAVBAR
@@ -9,7 +21,8 @@ export default function Navbar() {
                 <span>Home</span>
             </Link>
 
-            <span>Previous Reservations</span>
+        <button onClick={handleClick}>Logout</button>
+            {/* <span>Previous Reservations</span> */}
         </div>
     )
 }

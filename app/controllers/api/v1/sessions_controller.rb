@@ -19,7 +19,7 @@ end
 
   def destroy
        
-    session.delete :member_id
+    session.delete :user_id
     head :no_content
   end
 

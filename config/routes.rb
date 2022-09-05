@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :sessions, only: [:index, :create, :destroy]
 
       post "/login", to: "sessions#create"
-      post "/logout", to: "sessions#destroy"
+      delete "/logout", to: "sessions#destroy"
       # get '/logged_in', to: 'sessions#is_logged_in?'
       get "/me", to: "members#show"
       
