@@ -19,7 +19,8 @@ Rails.application.routes.draw do
       delete "/logout", to: "sessions#destroy"
       get "/me", to: "members#show"
 
-      post "/allPublicMembers", to: "members#allPublicMembers"    
+      post "/allPublicMembers", to: "members#all_public_members"   
+      get "/myReservations", to: "members#my_reservations" 
       
     end
   end

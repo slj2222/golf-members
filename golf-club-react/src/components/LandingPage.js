@@ -8,6 +8,7 @@ import ReserveView from "./ReserveView";
 import Navbar from "./Navbar";
 import Login from "./Login";
 import Signup from "./Signup";
+import MyReservationsView from "./MyReservationsView";
 
 export default function LandingPage({ currentUser, handleLogin, getCSRFToken, handleLogout }) {
     
@@ -88,6 +89,7 @@ export default function LandingPage({ currentUser, handleLogin, getCSRFToken, ha
 // }
 
 const [apiReservations, setApiReservations] = useState([])
+const [myReservations, setMyReservations] = useState([])
 
 useEffect(() => {
     fetch("http://localhost:3000/api/v1/reservations")
@@ -95,6 +97,18 @@ useEffect(() => {
         .then(data => setApiReservations(data))
 }, [])
 
+useEffect(() => {
+    fetch("http://localhost:3000/api/v1/myReservations", {
+            credentials: 'include',
+            headers: {
+                'X-CSRF-Token': getCSRFToken(),
+                "Content-Type": "application/json",
+            },
+        })
+        .then(res => res.json())
+        .then(data => setMyReservations(data))
+}, [])
+// console.log(myReservations)
 
 
 // +++++++++++++++++++++++++++++++++++++++++++
@@ -104,7 +118,7 @@ useEffect(() => {
         <Router>
             {currentUser ? (
                 <>
-                    <Navbar handleLogout={handleLogout} getCSRFToken={getCSRFToken} allPublicMembers={allPublicMembers}/>
+                    <Navbar currentUser={currentUser} handleLogout={handleLogout} getCSRFToken={getCSRFToken} allPublicMembers={allPublicMembers}/>
                     
                 </>
             ) : null}
@@ -114,6 +128,7 @@ useEffect(() => {
                         <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} currentUser={currentUser} />}/>
                         <Route path="/:id" element={<DayView currentUser={currentUser} apiReservations={apiReservations}/>}/>
                         <Route path="/:id/reserve" element={<ReserveView getCSRFToken={getCSRFToken} currentUser={currentUser}/>}/>        
+                        <Route path="/reservations" element={<MyReservationsView myReservations={myReservations} getCSRFToken={getCSRFToken} />} />
                     </>
                 ) : (
                     <>

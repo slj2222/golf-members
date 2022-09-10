@@ -10,14 +10,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
 
-    // constructor(props) {
-    //   super(props);
-    //   this.state = { 
-    //     isLoggedIn: false,
-    //     user: {}
-    //   };
-    //   console.log(this.state)
-    // };
+    
 
     
  

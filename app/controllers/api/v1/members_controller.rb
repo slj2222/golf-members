@@ -11,9 +11,17 @@ class Api::V1::MembersController < ApplicationController
         current_user = Member.find_by(session[:user_id])
     end
 
-    def allPublicMembers
+    def all_public_members
+        # works, but includes current member
         publicMembers = Member.where("username like ? ", query_params[:q])
+        # doesnt work.
+        # publicMembers = Member.where("username like ? ", query_params[:q]).where("username" != Member.find_by(session[:user_id])
         render json: publicMembers    
+    end
+
+    def my_reservations
+        user = Member.find_by(id: session[:user_id])
+        render json: user.my_reservations
     end
 
     def create
