@@ -106,7 +106,7 @@ useEffect(() => {
             },
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setMyReservations(data))
 }, [currentUser])
 // console.log(myReservations)
 
