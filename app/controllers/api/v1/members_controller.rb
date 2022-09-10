@@ -11,6 +11,11 @@ class Api::V1::MembersController < ApplicationController
         current_user = Member.find_by(session[:user_id])
     end
 
+    def allPublicMembers
+        publicMembers = Member.where("username like ? ", query_params[:q])
+        render json: publicMembers    
+    end
+
     def create
         user = Member.create!(member_params)
         session[:user_id] = user.id
@@ -36,4 +41,8 @@ class Api::V1::MembersController < ApplicationController
         # :password_confirmation, :first_name, :last_name, :membership_number, :phone_number, :email_address
     end
 
+    def query_params
+        # puts params[:q].to_s
+        params.permit(:q)
+    end
 end

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+
 
 export default function Navbar({ handleLogout, getCSRFToken }) {
 
@@ -20,10 +22,13 @@ export default function Navbar({ handleLogout, getCSRFToken }) {
             <Link to="/">
                 <span>Home</span>
             </Link>
-        <button>
-           <Link to="/" onClick={handleClick}>Logout</Link>
-        </button>
+            <button>
+                <Link to="/" onClick={handleClick}>Logout</Link>
+            </button>
             {/* <span>Previous Reservations</span> */}
+            <SearchBar getCSRFToken={getCSRFToken} />
         </div>
+        
+        
     )
 }

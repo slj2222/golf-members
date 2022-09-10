@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
       get "/me", to: "members#show"
+
+      post "/allPublicMembers", to: "members#allPublicMembers"    
       
     end
   end

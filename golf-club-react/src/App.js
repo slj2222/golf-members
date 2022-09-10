@@ -20,14 +20,7 @@ function App() {
     // };
 
     
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/api/v1/members")
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       console.log(data)
-  //       setAllMembers(data)
-  //     })
-  // }, [])
+ 
   
   //auth function
   useEffect(() => {

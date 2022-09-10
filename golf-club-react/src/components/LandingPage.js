@@ -13,10 +13,20 @@ export default function LandingPage({ currentUser, handleLogin, getCSRFToken, ha
     
 
     const [availableTeeTimeDayArray, setAvailableTeeTimeDayArray] = useState([])
+    const [allPublicMembers, setAllPublicMembers] = useState([])
     // const [selectedDay, setSelectedDay] = useState([])
         // console.log(availableTeeTimeDayArray)
     // console.log(selectedDay)
    
+     useEffect(() => {
+    fetch("http://localhost:3000/api/v1/members")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setAllPublicMembers(data)
+      })
+  }, [])
+
     useEffect(() => {        
         const teeTimeDayArrayUnix = []
         // console.log(teeTimeDayArrayUnix)
@@ -94,7 +104,7 @@ useEffect(() => {
         <Router>
             {currentUser ? (
                 <>
-                    <Navbar handleLogout={handleLogout} getCSRFToken={getCSRFToken}/>
+                    <Navbar handleLogout={handleLogout} getCSRFToken={getCSRFToken} allPublicMembers={allPublicMembers}/>
                     
                 </>
             ) : null}
