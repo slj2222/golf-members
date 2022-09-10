@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-export default function ReserveView({ getCSRFToken }) {
+export default function ReserveView({ getCSRFToken, currentUser }) {
 
     const { id } = useParams()
     const intId = parseInt(id)
@@ -22,7 +22,7 @@ export default function ReserveView({ getCSRFToken }) {
                 'Content-Type': 'application/json' 
             },
             body: JSON.stringify({
-                member_id: 1,
+                member_id: currentUser.id,
                 number_of_players: numberOfPlayers,
                 reservation_time: intId,
             })

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TimeCard from "./TimeCard";
 import { useParams } from "react-router-dom";
 
-export default function DayView({ apiReservations, removeTeeTime }) {
+export default function DayView({ apiReservations, removeTeeTime, currentUser }) {
     // console.log(selectedDay)
     console.log(apiReservations)
 
@@ -64,7 +64,7 @@ export default function DayView({ apiReservations, removeTeeTime }) {
     const mapteeTimeTimeArrayUnix = unixState.filter(ttime => !apiState.includes(ttime)).map(teeTime => {
         return (
             // console.log(time)
-            <TimeCard key={teeTime} teeTime={teeTime} removeTeeTime={removeTeeTime}/>
+            <TimeCard key={teeTime} teeTime={teeTime} removeTeeTime={removeTeeTime} currentUser={currentUser}/>
         )
     })
 
@@ -74,11 +74,12 @@ export default function DayView({ apiReservations, removeTeeTime }) {
     // setAvailableTeeTimeTimeArray(availableTeeTimeTimeArray.filter(teeTime => teeTime !== removedTeeTime))
 
     return (
-        <div>
-            DAY VIEW
-            <div>---------------------</div> 
-            {mapteeTimeTimeArrayUnix}
-            <div>---------------------</div> 
+        <div className="table-outerdiv">
+            <table className="timecard-table">            
+                {/* <div>---------------------</div>  */}
+                {mapteeTimeTimeArrayUnix}
+                {/* <div>---------------------</div>  */}
+            </table>
         </div>
     )
 }

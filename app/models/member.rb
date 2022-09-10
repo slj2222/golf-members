@@ -5,4 +5,5 @@ class Member < ApplicationRecord
     validates :username, presence: true
     validates :password, presence: true
     validates :username, length: { minimum: 5 }
+    validates :membership_number, presence: true
 end

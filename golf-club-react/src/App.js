@@ -39,7 +39,7 @@ function App() {
     });
   }, [])
   function getCSRFToken() {
-    return unescape(document.cookie.split('=')[1])
+    return (document.cookie.split('=')[1])
   }
 
   function handleLogin(loggedInUser) {

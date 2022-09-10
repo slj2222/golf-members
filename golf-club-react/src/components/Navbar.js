@@ -20,8 +20,9 @@ export default function Navbar({ handleLogout, getCSRFToken }) {
             <Link to="/">
                 <span>Home</span>
             </Link>
-
-        <button onClick={handleClick}>Logout</button>
+        <button>
+           <Link to="/" onClick={handleClick}>Logout</Link>
+        </button>
             {/* <span>Previous Reservations</span> */}
         </div>
     )

@@ -7,6 +7,7 @@ import MonthView from "./MonthView"
 import ReserveView from "./ReserveView";
 import Navbar from "./Navbar";
 import Login from "./Login";
+import Signup from "./Signup";
 
 export default function LandingPage({ currentUser, handleLogin, getCSRFToken, handleLogout }) {
     
@@ -94,18 +95,20 @@ useEffect(() => {
             {currentUser ? (
                 <>
                     <Navbar handleLogout={handleLogout} getCSRFToken={getCSRFToken}/>
+                    
                 </>
             ) : null}
             <Routes>
                 {currentUser ? (
                     <>
                         <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} currentUser={currentUser} />}/>
-                        <Route path="/:id" element={<DayView  apiReservations={apiReservations}/>}/>
-                        <Route path="/:id/reserve" element={<ReserveView getCSRFToken={getCSRFToken}/>}/>        
+                        <Route path="/:id" element={<DayView currentUser={currentUser} apiReservations={apiReservations}/>}/>
+                        <Route path="/:id/reserve" element={<ReserveView getCSRFToken={getCSRFToken} currentUser={currentUser}/>}/>        
                     </>
                 ) : (
                     <>
                         <Route path="/" element={<Login handleLogin={handleLogin} getCSRFToken={getCSRFToken}/>} />    
+                        <Route path="/signup" element={<Signup getCSRFToken={getCSRFToken}/>} />
                     </>
                 )}
             </Routes>
