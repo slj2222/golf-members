@@ -10,6 +10,6 @@ class Member < ApplicationRecord
 
 
     def my_reservations
-        self.reservations.map{|reservation| reservation}
+        self.reservations
     end
 end
