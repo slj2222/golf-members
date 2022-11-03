@@ -1,7 +1,9 @@
 import React from "react";
 import MonthViewCard from "./MonthViewCard";
+import Calendar from 'react-calendar';
 
-export default function MonthView({ availableTeeTimeDayArray }) {
+export default function MonthView({ availableTeeTimeDayArray, thisDay, setThisDay }) {
+    
 // console.log(availableTeeTimeDayArray)
     //mapover the state array and return the DayCard.js component, send each day as props to DayComponent.js
     const mapAvailableTeeTimeTimeArrayDayView = availableTeeTimeDayArray.map(dayArray => {
@@ -19,6 +21,8 @@ export default function MonthView({ availableTeeTimeDayArray }) {
             <div className="month-view-main">
                 {mapAvailableTeeTimeTimeArrayDayView}
             </div>
+            {/* <Calendar onChange={setThisDay} value={thisDay} /> */}
+            
         </div>
     )
 }

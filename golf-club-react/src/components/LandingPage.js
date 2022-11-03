@@ -9,6 +9,8 @@ import Navbar from "./Navbar";
 import Login from "./Login";
 import Signup from "./Signup";
 import MyReservationsView from "./MyReservationsView";
+import MyFriendsView from "./MyFriendsView";
+
 
 export default function LandingPage({ currentUser, handleLogin, getCSRFToken, handleLogout }) {
     
@@ -82,6 +84,7 @@ export default function LandingPage({ currentUser, handleLogin, getCSRFToken, ha
 
 // ++++++++++++++++++++++++++++++++++++++++++
 
+const [thisDay, setThisDay] = useState(new Date());
 
 // function removeTeeTime(removedTeeTime) {
 //     // setAvailableTeeTimeTimeArray(availableTeeTimeTimeArray.filter(teeTime => teeTime !== removedTeeTime))
@@ -125,10 +128,12 @@ useEffect(() => {
             <Routes>
                 {currentUser ? (
                     <>
-                        <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} currentUser={currentUser} />}/>
+                        <Route path="/" element={<MonthView availableTeeTimeDayArray={availableTeeTimeDayArray} currentUser={currentUser} thisDay={thisDay} setThisDay={setThisDay}/>}/>
                         <Route path="/:id" element={<DayView currentUser={currentUser} apiReservations={apiReservations}/>}/>
                         <Route path="/:id/reserve" element={<ReserveView getCSRFToken={getCSRFToken} currentUser={currentUser}/>}/>        
                         <Route path="/reservations" element={<MyReservationsView myReservations={myReservations} getCSRFToken={getCSRFToken} />} />
+                        <Route path="/friends" element={<MyFriendsView />} />
+                        
                     </>
                 ) : (
                     <>
